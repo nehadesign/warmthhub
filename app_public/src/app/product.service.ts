@@ -16,4 +16,8 @@ export class ProductService {
   getProductByCategory(category: string) {
     return this.http.get<any>(`${AppConstants.API_URL}product/category/${category}`);
   }
+ 
+  getProductByName(name: string) {
+    return this.http.get<any>(`${AppConstants.API_URL}product/search/${name}`);
+  }
 }

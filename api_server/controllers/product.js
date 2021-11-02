@@ -54,6 +54,33 @@ const getProductsByCategory = (req, res) => {
   }
 };
 
+const getProductsByName = (req, res) => {
+  console.log("name : ", req.params.name);
+  if (req && req.params && req.params.name) {
+    Product.find({ name: new RegExp('.*' + req.params.name + '.*')}).exec((err, productData) => {
+      if (err) {
+        res.status(500).json({
+          success: false,
+          message: "Record is not found or some error is occured",
+          error: err,
+        });
+        return;
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Record is found",
+        data: productData,
+      });
+    });
+  } else {
+    res.status(400).json({
+      success: false,
+      message: "Record id is not passed, id is required for data fetch",
+    });
+  }
+};
+
 const getProductById = (req, res) => {
   if (req && req.params && req.params.id) {
     Product.findById(req.params.id).exec((err, productData) => {
@@ -187,4 +214,5 @@ module.exports = {
   deleteProductById,
   addProduct,
   getProductsByCategory,
+  getProductsByName,
 };

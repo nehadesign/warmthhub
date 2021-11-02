@@ -11,6 +11,10 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
     path: 'list/:category',
     component: ListComponent,
   },
@@ -23,6 +27,12 @@ const routes: Routes = [
     path: 'details/:id',
     component: DetailsComponent,
   },
+
+  {
+    path: 'search/:name',
+    component: ListComponent,
+  },
+
 
   {
     path: '**',
