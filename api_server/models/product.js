@@ -43,3 +43,6 @@ const productDetails = new Schema({
   relatedProducts: [String],
   color: [String],
 });
+
+
+module.exports = mongoose.model("Product", productDetails);
