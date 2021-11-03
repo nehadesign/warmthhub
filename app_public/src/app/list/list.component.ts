@@ -11,16 +11,17 @@ export class ListComponent implements OnInit {
   constructor(private service: ProductService, private route: ActivatedRoute) {}
   products: any = [];
   category!: string;
-  name!: string;
+  searchKeyWord!: string;
   noResultMessage!: string;
   ngOnInit(): void {
     // Check for the PARAMS if there is no prams then get all the products
 
     this.route.params.subscribe((params) => {
       console.log(params);
+      this.products = [];
       if (params.category) {
         this.category = params.category;
-        console.log('recordId', this.category);
+        console.log('Category name', this.category);
         this.service.getProductByCategory(this.category).subscribe(
           (res) => {
             console.log('Res from Category API ', res);
@@ -35,14 +36,14 @@ export class ListComponent implements OnInit {
           }
         );
       } else if (params.name) {
-        this.name = params.name;
-        this.service.getProductByName(this.name).subscribe(
+        this.searchKeyWord = params.name;
+        this.service.getProductByName(this.searchKeyWord).subscribe(
           (res) => {
             console.log('Res from name API ', res);
             if (res && res.data && res.data.length > 0) {
               this.products = res.data;
             } else {
-              this.noResultMessage = `No result found for the keyword '${this.name}', please try some other keyword.`;
+              this.noResultMessage = `No result found for the keyword '${this.searchKeyWord}', please try some other keyword.`;
             }
           },
           (err) => {
