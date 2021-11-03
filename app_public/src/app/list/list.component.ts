@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
   products: any = [];
   category!: string;
   name!: string;
+  noResultMessage!: string;
   ngOnInit(): void {
     // Check for the PARAMS if there is no prams then get all the products
 
@@ -23,8 +24,10 @@ export class ListComponent implements OnInit {
         this.service.getProductByCategory(this.category).subscribe(
           (res) => {
             console.log('Res from Category API ', res);
-            if (res && res.data) {
+            if (res && res.data && res.data.length > 0) {
               this.products = res.data;
+            } else {
+              this.noResultMessage = `Opps! No record is found, please come again later, we promise we will get something for you by then`;
             }
           },
           (err) => {
@@ -36,8 +39,10 @@ export class ListComponent implements OnInit {
         this.service.getProductByName(this.name).subscribe(
           (res) => {
             console.log('Res from name API ', res);
-            if (res && res.data) {
+            if (res && res.data && res.data.length > 0) {
               this.products = res.data;
+            } else {
+              this.noResultMessage = `No result found for the keyword '${this.name}', please try some other keyword.`;
             }
           },
           (err) => {
@@ -48,8 +53,10 @@ export class ListComponent implements OnInit {
         this.service.getAllProducts().subscribe(
           (res) => {
             console.log('Res from all products API ', res);
-            if (res && res.data) {
+            if (res && res.data && res.data.length > 0) {
               this.products = res.data;
+            } else {
+              this.noResultMessage = `Opps! No record is found, please come again later, we promise we will get something for you by then.`;
             }
           },
           (err) => {
