@@ -1,0 +1,19 @@
+{
+  "name": "warmthhub",
+  "version": "1.0.0",
+  "description": "Winter shopping website",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "Shopping",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}

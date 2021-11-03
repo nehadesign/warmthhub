@@ -1,0 +1,59 @@
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to our product catalog</h1>
+            <p class="lead text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est porro accusantium,
+                sit odit vel voluptatem! Ea quis sapiente labore voluptate fugiat quaerat laudantium odit. Adipisci
+                ipsam nihil numquam quae laborum!.</p>
+            <!-- <p>
+                <a href="#" class="btn btn-primary my-2 mx-2">Search by category</a>
+                <a href="#" class="btn btn-secondary my-2 mx-2">Search by keywords</a>
+            </p> -->
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row my-5" *ngIf="searchKeyWord">
+                Result for the keyword '{{searchKeyWord}}'
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" *ngIf="products.length > 0">
+                <div class="col-md-3" *ngFor="let product of products">
+                    <div class="card mb-3 shadow-sm">
+                        <a [routerLink]="['/details', product._id]" routerLinkActive="router-link-active">
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                src={{product.productImages[0]}} xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                        </a>
+                        <div class="card-body">
+                            <a [routerLink]="['/details', product._id]">
+                                <p class="card-text">{{product.name}}</p>
+                            </a>
+                            <p class="card-text font-weight-bold my-4">C$ {{product.price}}</p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div> -->
+                                <small class="text-muted">Rating {{product?.rating}}</small>
+                                <small class="text-muted">Sold {{product?.inventory}}</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row" *ngIf="products.length == 0">
+                <h1> {{noResultMessage}}
+                </h1>
+            </div>
+        </div>
+    </div>
+
+</main>
