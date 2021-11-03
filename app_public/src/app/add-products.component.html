@@ -1,0 +1,62 @@
+<form (ngSubmit)="addNewProduct(newProduct)">
+<br />
+<div class="form-group">
+<label for="name">Product Name</label>&nbsp;
+<input [(ngModel)]="newProduct.title" id="name" name="name" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for="category">Category</label>&nbsp;
+<input [(ngModel)]="newProduct.category" id="category" name="category" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for="price">Price</label>&nbsp;
+<input [(ngModel)]="newProduct.price" id="price" name="price" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for=" description">Description</label>&nbsp;
+<input [(ngModel)]="newProduct.description" id="description" name="description" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for=" comments">Comments</label>&nbsp;
+<input [(ngModel)]="newProduct.comments" id="comments" name="comments" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for=" inventory">Inventory</label>&nbsp;
+<input [(ngModel)]="newProduct.inventory" id="inventory" name="inventory" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for=" size">Size</label>&nbsp;
+<input [(ngModel)]="newProduct.size" id="size" name="size" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for=" color">Color</label>&nbsp;
+<input [(ngModel)]="newProduct.color" id="color" name="color" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for=" hidden">Hidden</label>&nbsp;
+<input [(ngModel)]="newProduct.hidden" id="hidden" name="hidden" required="required" />
+</div>
+<br />
+<br />
+<div class="form-group">
+<label for="productImages">Insert Model's Image:</label>
+<input [(ngModel)]="newProduct.productImages" type="text" class="form-control" name="productImages" placeholder="Enter the Image" required="required">
+</div>
+<button type="submit">Add New Product</button>
+</form>
